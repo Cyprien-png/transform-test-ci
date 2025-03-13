@@ -26,20 +26,20 @@ namespace INTERNAL_SOURCE_LOAD_TEST
         public void Execute_ValidQuery_ShouldCallExecuteOnce()
         {
             // GIVEN: A valid SQL query
-            var sqlQuery = "INSERT INTO test_table (name) VALUES ('Test Name');";
+            var sqlQuery = "INSERT INTO test_table (name) VALUES ('Testaaa Name');";
 
             // WHEN: The Execute method is called
             _mockExecutor.Object.Execute(sqlQuery);
 
             // THEN: Verify the Execute method is called exactly once
-            _mockExecutor.Verify(executor => executor.Execute(sqlQuery), Times.Once, "The Execute method should be called exactly once.");
+            _mockExecutor.Verify(executor => executor.Execute(sqlQuery), Times.Once, "The Execute method be called exactly once.");
         }
 
         [Test]
         public void ExecuteAndReturnId_ValidQuery_ShouldReturnMockedId()
         {
             // GIVEN: A valid SQL query and a mocked ID
-            var sqlQuery = "INSERT INTO test_table (name) VALUES ('Another Test Name');";
+            var sqlQuery = "INSERT INTO (name) VALUES ('Another Test Name');";
             var expectedId = 123;
 
             _mockExecutor.Setup(executor => executor.ExecuteAndReturnId(sqlQuery)).Returns(expectedId);
