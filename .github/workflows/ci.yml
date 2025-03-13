@@ -52,3 +52,23 @@ jobs:
       with:
         name: internal-source-load-tar
         path: internal-source-load.tar
+
+  merge-to-develop:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for merge
+
+      - name: Checkout develop branch
+        run: |
+          git checkout develop
+
+      - name: Merge main into develop
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git merge origin/main --no-ff -m "Merge main into develop"
+          git push origin develop
