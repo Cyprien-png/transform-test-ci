@@ -25,14 +25,8 @@ namespace INTERNAL_SOURCE_LOAD_TEST
         [Test]
         public void Execute_ValidQuery_ShouldCallExecuteOnce()
         {
-            // GIVEN: A valid SQL query
-            var sqlQuery = "INSERT INTO test_table (name) VALUES ('Testaaa Name');";
-
-            // WHEN: The Execute method is called
-            _mockExecutor.Object.Execute(sqlQuery);
-
-            // THEN: Verify the Execute method is called exactly once
-            _mockExecutor.Verify(executor => executor.Execute(sqlQuery), Times.Once, "The Execute method be called exactly once.");
+            // expect true to be false
+            Assert.That(true, Is.False, "This test should fail."); 
         }
 
         [Test]
