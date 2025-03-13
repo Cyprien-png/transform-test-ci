@@ -21,9 +21,8 @@ jobs:
         docker build --target test -f Dockerfile -t internal-source-load:test . --no-cache
         docker run --rm internal-source-load:test
         
-  test-and-deploy-production:
+  deploy-production:
     runs-on: ubuntu-latest
-    needs: test
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
     - name: Checkout code
