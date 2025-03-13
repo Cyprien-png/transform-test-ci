@@ -6,9 +6,6 @@ name: .NET
 on:
   push:
     branches: [ "main", "develop", "release/**" ]
-  pull_request_review:
-    types: [submitted]
-    branches: [ "*" ]
   pull_request:
     branches: [ "*" ]
 
@@ -59,7 +56,7 @@ jobs:
   merge-to-develop:
     runs-on: ubuntu-latest
     needs: test
-    if: github.event_name == 'pull_request_review' && github.event.review.state == 'approved' && github.base_ref == 'main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
