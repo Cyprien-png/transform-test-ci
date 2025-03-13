@@ -52,3 +52,19 @@ jobs:
       with:
         name: internal-source-load-tar
         path: internal-source-load.tar
+
+  merge-to-develop:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Merge PR branch into develop
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git merge ${{ github.event.pull_request.head.ref }} --no-ff
+          git push origin develop
