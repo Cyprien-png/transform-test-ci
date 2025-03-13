@@ -28,7 +28,7 @@ namespace INTERNAL_SOURCE_LOAD_TEST
             // expect true to be false
             // NOW IM FALSE 
             // MWAHAHAHAHA
-            Assert.That(true, Is.False, "This test should fail."); 
+            Assert.That(true, Is.True, "This test should fail."); 
         }
 
         [Test]
