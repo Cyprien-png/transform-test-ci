@@ -26,7 +26,7 @@ namespace INTERNAL_SOURCE_LOAD_TEST
         }
 
         [Test]
-        public void GenerateInsertQueries_GivenValidSimpleObject_ReturnsExpectedQuery()
+        public void GenerateInsertQueries_GivenValidSasdimpleObject_ReturnsExpectedQuery()
         {
             // Given
             string valideQuery = "INSERT INTO SimpleModel (Id, Name) VALUES (1, 'Test');";
